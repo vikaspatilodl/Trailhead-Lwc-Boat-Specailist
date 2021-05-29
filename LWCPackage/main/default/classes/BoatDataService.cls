@@ -19,6 +19,7 @@ public with sharing class BoatDataService {
         return Database.query(query);
     }
 
+    @AuraEnabled(cacheable=true)
     public static List<Boat__c> getSimilarBoats(Id boatId, String similarBy) {
         List<Boat__c> similarBoats = new List<Boat__c>();
         List<Boat__c> parentBoat = [SELECT Id, Length__c, Price__c, BoatType__c, BoatType__r.Name
